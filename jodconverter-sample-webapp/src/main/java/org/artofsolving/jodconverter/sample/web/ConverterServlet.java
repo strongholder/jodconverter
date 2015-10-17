@@ -61,7 +61,7 @@ public class ConverterServlet extends HttpServlet {
         	long conversionTime = System.currentTimeMillis() - startTime;
         	logger.info(String.format("successful conversion: %s [%db] to %s in %dms", inputExtension, inputFile.length(), outputExtension, conversionTime));
         	response.setContentType(outputFormat.getMediaType());
-            response.setHeader("Content-Disposition", "attachment; filename="+ baseName + "." + outputExtension);
+            //response.setHeader("Content-Disposition", "attachment; filename="+ baseName + "." + outputExtension);
             sendFile(outputFile, response);
         } catch (Exception exception) {
             logger.severe(String.format("failed conversion: %s [%db] to %s; %s; input file: %s", inputExtension, inputFile.length(), outputExtension, exception, inputFile.getName()));

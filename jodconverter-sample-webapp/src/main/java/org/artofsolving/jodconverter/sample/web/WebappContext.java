@@ -13,7 +13,7 @@ import org.artofsolving.jodconverter.office.OfficeManager;
 
 public class WebappContext {
 
-    public static final String PARAMETER_OFFICE_PORT = "office.port";
+    public static final String PARAMETER_OFFICE_PORTS = "office.ports";
 	public static final String PARAMETER_OFFICE_HOME = "office.home";
 	public static final String PARAMETER_OFFICE_PROFILE = "office.profile";
 	public static final String PARAMETER_FILEUPLOAD_FILE_SIZE_MAX = "fileupload.fileSizeMax";
@@ -39,10 +39,19 @@ public class WebappContext {
 		}
 
 		DefaultOfficeManagerConfiguration configuration = new DefaultOfficeManagerConfiguration();
-		String officePortParam = servletContext.getInitParameter(PARAMETER_OFFICE_PORT);
-		if (officePortParam != null) {
-		    configuration.setPortNumber(Integer.parseInt(officePortParam));
+		String officePortParam = servletContext.getInitParameter(PARAMETER_OFFICE_PORTS);
+		String[] officePortParamsStr = officePortParam.split(",");
+		int[] officePortParams = new int[officePortParamsStr.length];
+
+		for(int i = 0; i < officePortParamsStr.length; i++)
+		{
+			officePortParams[i] = Integer.parseInt(officePortParamsStr[i]);
 		}
+
+		if (officePortParams != null) {
+		    configuration.setPortNumbers(officePortParams);
+		}
+
 		String officeHomeParam = servletContext.getInitParameter(PARAMETER_OFFICE_HOME);
 		if (officeHomeParam != null) {
 		    configuration.setOfficeHome(new File(officeHomeParam));

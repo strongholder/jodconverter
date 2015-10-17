@@ -5,23 +5,24 @@
          version="2.4">
 
   <display-name>JODConverter</display-name>
-  <description>JODConverter Sample Web Application</description>
+  <description>JODConverter Web Application</description>
 
   <context-param>
     <param-name>fileupload.fileSizeMax</param-name>
-    <param-value>5242880</param-value><!-- 5MB -->
+    <param-value>52428800</param-value><!-- 50MB -->
   </context-param>
 
-  <!-- uncomment and edit if needed -->
-  <!--
+
   <context-param>
-    <param-name>office.port</param-name>
-    <param-value>8100</param-value>
+    <param-name>office.ports</param-name>
+    <param-value>8100,8101,8102,8103</param-value>
   </context-param>
   <context-param>
     <param-name>office.home</param-name>
-    <param-value>/opt/openoffice.org3</param-value>
+    <param-value>/Applications/OpenOffice.app/Contents/</param-value>
   </context-param>
+  <!-- uncomment and edit if needed -->
+  <!--
   <context-param>
     <param-name>office.profile</param-name>
     <param-value>/home/converter/.openoffice.org/3</param-value>
